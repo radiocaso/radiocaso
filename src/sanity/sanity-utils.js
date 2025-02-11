@@ -180,5 +180,25 @@ export async function getGroup(slug) {
     { slug },
   );
 }
+
+export async function getSpaces() {
+  return client.fetch(
+    `*[_type == "espacio"] | order(nombre asc) { 
+      _id,
+      nombre,
+      slug,
+    }`,
+  );
+}
+
+export async function getSpace(slug) {
+  return client.fetch(
+    `*[_type == "espacio" && slug.current == $slug][0] {
+      _id,
+      nombre,
+      links,
+      paises,
+    }`,
+    { slug },
   );
 }
