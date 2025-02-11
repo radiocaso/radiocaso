@@ -1,9 +1,13 @@
+import LoadingScreen from "./components/LoadingScreen";
+import Header from "./components/Header";
+import Home from "./components/Home";
+
 function App() {
   return (
     <>
-      <h1 className="animate-pulse font-thin">
-        ༼ つ ◕_◕ ༽つ⁖ aqui tiene su html!
-      </h1>
+      <LoadingScreen />
+      <Header />
+      <Home />
     </>
   );
 }
