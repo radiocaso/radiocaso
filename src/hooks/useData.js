@@ -63,3 +63,17 @@ export function usePublications() {
     queryFn: sanityUtils.getPublications,
   });
 }
+
+export function usePeople() {
+  return useQuery({
+    queryKey: ["people"],
+    queryFn: sanityUtils.getPeople,
+  });
+}
+
+export function useGroups() {
+  return useQuery({
+    queryKey: ["groups"],
+    queryFn: sanityUtils.getGroups,
+  });
+}

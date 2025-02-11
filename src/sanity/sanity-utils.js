@@ -132,12 +132,29 @@ export async function getPublications() {
 
 export async function getPeople() {
   return client.fetch(
-    `*[_type == "persona"] | order(fecha desc) { 
+    `*[_type == "persona"] | order(nombre asc) { 
       _id,
       nombre,
       slug,
       links,
       paises,
+    }`,
+  );
+}
+
+export async function getGroups() {
+  return client.fetch(
+    `*[_type == "grupo"] | order(nombre asc) { 
+      _id,
+      nombre,
+      slug,
+      links,
+      paises,
+      integrantes[]->{
+         _id,
+        nombre,
+        slug,
+      },
     }`,
   );
 }
