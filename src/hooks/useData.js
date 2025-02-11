@@ -28,3 +28,31 @@ export function useTransmissionTypes() {
     queryFn: sanityUtils.getTransmissionTypes,
   });
 }
+
+export function useContexts() {
+  return useQuery({
+    queryKey: ["contexts"],
+    queryFn: sanityUtils.getContexts,
+  });
+}
+
+export function usePrograms() {
+  return useQuery({
+    queryKey: ["programs"],
+    queryFn: sanityUtils.getPrograms,
+  });
+}
+
+export function usePastTransmissions() {
+  return useQuery({
+    queryKey: ["pastTransmissions"],
+    queryFn: sanityUtils.getPastTransmissions,
+  });
+}
+
+export function usePublications() {
+  return useQuery({
+    queryKey: ["publications"],
+    queryFn: sanityUtils.getPublications,
+  });
+}

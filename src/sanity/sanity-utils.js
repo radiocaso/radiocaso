@@ -10,8 +10,10 @@ export async function getFutureTransmissions() {
       tipoDeTransmision
     },
     programa->{
+      _id,
       titulo},
     contexto->{
+      _id,
       titulo},
     descripcionCorta,
   }`);
@@ -54,6 +56,65 @@ export async function getTransmissionTypes() {
     `*[_type == "tipoDeTransmision"] {
       _id,
       tipoDeTransmision,
+    }`,
+  );
+}
+
+export async function getContexts() {
+  return client.fetch(
+    `*[_type == "contexto"] | order(fecha desc) { 
+      _id,
+      titulo,
+      slug,
+    }`,
+  );
+}
+
+export async function getPrograms() {
+  return client.fetch(`
+    *[_type == "programa"] | order(fecha desc) { 
+      _id,
+      titulo,
+      slug,
+    }`);
+}
+
+export async function getPastTransmissions() {
+  return client.fetch(
+    `*[_type == "transmision" && fecha < now()] | order(fecha desc) { 
+      _id,
+      titulo,
+      "slug": slug.current,
+      fecha,
+      programa->{
+        titulo},
+      tipoDeTransmision[]->{
+        _id,
+        tipoDeTransmision}
+    }`,
+  );
+}
+
+export async function getPublications() {
+  return client.fetch(
+    `*[_type == "publicacion"] | order(fecha desc) { 
+      _id,
+      titulo,
+      slug,
+      fecha,
+      tipoDePublicacion,
+      descripcion,
+      recursos[]->{
+        _id,
+        titulo,
+        url,
+        archivo{
+          asset->{
+            url
+          }
+        },
+      },
+      creditos
     }`,
   );
 }
