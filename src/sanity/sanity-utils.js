@@ -136,9 +136,20 @@ export async function getPeople() {
       _id,
       nombre,
       slug,
+    }`,
+  );
+}
+
+export async function getPerson(slug) {
+  return client.fetch(
+    `*[_type == "persona" && slug.current == $slug][0] {
+      _id,
+      nombre,
+      slug,
       links,
       paises,
     }`,
+    { slug },
   );
 }
 
@@ -148,13 +159,26 @@ export async function getGroups() {
       _id,
       nombre,
       slug,
+    }`,
+  );
+}
+
+export async function getGroup(slug) {
+  return client.fetch(
+    `*[_type == "grupo" && slug.current == $slug][0] {
+      _id,
+      nombre,
+      slug,
       links,
       paises,
       integrantes[]->{
-         _id,
+        _id,
         nombre,
         slug,
       },
     }`,
+    { slug },
+  );
+}
   );
 }
