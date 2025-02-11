@@ -6,6 +6,9 @@ export default function TransmissionCard({ transmission }) {
       {transmission.programa && (
         <div className="italic">{transmission.programa.titulo}</div>
       )}
+      {transmission.contexto && (
+        <div className="italic">{transmission.contexto.titulo}</div>
+      )}
       <div className="flex gap-1">
         {transmission.tipoDeTransmision &&
           transmission.tipoDeTransmision.map((tipo) => (
