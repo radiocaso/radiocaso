@@ -77,3 +77,10 @@ export function useGroups() {
     queryFn: sanityUtils.getGroups,
   });
 }
+
+export function useSpaces() {
+  return useQuery({
+    queryKey: ["spaces"],
+    queryFn: sanityUtils.getSpaces,
+  });
+}
