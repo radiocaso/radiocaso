@@ -1,4 +1,6 @@
 import { useInitialData } from "../hooks/useData";
+import Nav from "./Nav";
+import { NavLink } from "react-router";
 
 export default function Header() {
   const { data, isLoading, error } = useInitialData();
@@ -6,7 +8,10 @@ export default function Header() {
 
   return (
     <div className="flex items-center border-b py-4">
-      <h1 className="text-7xl font-black">{data.titulo}</h1>
+      <NavLink to="/" className="text-7xl font-black">
+        {data.titulo}
+      </NavLink>
+      <Nav />
     </div>
   );
 }
