@@ -97,6 +97,8 @@ export async function getPastTransmissions() {
       fecha,
       programa->{
         titulo},
+      contexto->{
+        titulo},
       tipoDeTransmision[]->{
         _id,
         tipoDeTransmision}
@@ -124,6 +126,18 @@ export async function getPublications() {
         },
       },
       creditos
+    }`,
+  );
+}
+
+export async function getPeople() {
+  return client.fetch(
+    `*[_type == "persona"] | order(fecha desc) { 
+      _id,
+      nombre,
+      slug,
+      links,
+      paises,
     }`,
   );
 }
