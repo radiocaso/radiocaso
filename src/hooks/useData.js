@@ -36,6 +36,13 @@ export function useContexts() {
   });
 }
 
+export function useContextTypes() {
+  return useQuery({
+    queryKey: ["contextTypes"],
+    queryFn: sanityUtils.getContextTypes,
+  });
+}
+
 export function usePrograms() {
   return useQuery({
     queryKey: ["programs"],

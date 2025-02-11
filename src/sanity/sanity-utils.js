@@ -70,6 +70,15 @@ export async function getContexts() {
   );
 }
 
+export async function getContextTypes() {
+  return client.fetch(
+    `*[_type == "tipoDeContexto"] {
+      _id,
+      tipoDeContexto,
+    }`,
+  );
+}
+
 export async function getPrograms() {
   return client.fetch(`
     *[_type == "programa"] | order(fecha desc) { 
